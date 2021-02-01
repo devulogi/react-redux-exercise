@@ -13,7 +13,7 @@ class App extends Component {
   }
 
   render() {
-    const todos = this.props.todos.map(({ todo }, index) => (
+    const todoList = this.props.todos.map(({ todo }, index) => (
       <li
         key={index}
         onClick={() => {
@@ -26,7 +26,7 @@ class App extends Component {
 
     return (
       <div>
-        <ul>{todos}</ul>
+        <ul>{todoList}</ul>
         <label>Selected todo: {this.props.todo}</label>
       </div>
     );
