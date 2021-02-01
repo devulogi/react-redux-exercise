@@ -2,7 +2,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { selectTodo } from "./actions";
-import store from "./reducers";
 
 const mapStateToProps = (state) => {
   return state;
@@ -10,7 +9,7 @@ const mapStateToProps = (state) => {
 
 class App extends Component {
   componentDidMount() {
-    store.dispatch(selectTodo(this.props.todos[1].todo));
+    this.props.selectTodo(this.props.todos[1].todo);
   }
 
   render() {
@@ -18,7 +17,7 @@ class App extends Component {
       <li
         key={index}
         onClick={() => {
-          store.dispatch(this.props.selectTodo(todo));
+          this.props.selectTodo(todo);
         }}
       >
         {todo}
