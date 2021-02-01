@@ -18,7 +18,7 @@ class App extends Component {
       <li
         key={index}
         onClick={() => {
-          store.dispatch(selectTodo(todo));
+          store.dispatch(this.props.selectTodo(todo));
         }}
       >
         {todo}
@@ -34,4 +34,4 @@ class App extends Component {
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, { selectTodo })(App);
