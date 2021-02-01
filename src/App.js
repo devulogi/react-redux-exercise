@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+/* eslint-disable no-useless-constructor */
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { selectTodo } from "./actions";
+import store from "./reducers";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const mapStateToProps = (state) => {
+  return state;
+};
+
+class App extends Component {
+  componentDidMount() {
+    store.dispatch(selectTodo(this.props.todos[1].todo));
+  }
+
+  render() {
+    const todos = this.props.todos.map(({ todo }, index) => (
+      <li
+        key={index}
+        onClick={() => {
+          store.dispatch(selectTodo(todo));
+        }}
+      >
+        {todo}
+      </li>
+    ));
+
+    return (
+      <div>
+        <ul>{todos}</ul>
+        <label>Selected todo: {this.props.todo}</label>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default connect(mapStateToProps)(App);
