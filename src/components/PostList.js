@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { fetchPost } from "../actions";
+import { fetchPost, fetchUser } from "../actions";
 
 class PostList extends Component {
   componentDidMount() {
     this.props.fetchPost();
+    this.props.fetchPost(1);
   }
 
   renderList() {
