@@ -11,4 +11,4 @@ const _fetchUser = _.memoize(async (id, dispatch) => {
   return dispatch({ type: "FETCH_USER", payload: response.data });
 });
 
-export const fetchUser = (id) => (id, dispatch) => _fetchUser(id, dispatch);
+export const fetchUser = (id) => (dispatch) => _fetchUser(id, dispatch);
